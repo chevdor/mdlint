@@ -6,8 +6,6 @@
 
 Port of [markdownlint](https://github.com/markdownlint/markdownlint) to Rust.
 
-It uses the 2018 Edition (currently in preview) so in order to make it work you will need to use the `nightly` toolchain.
-
 ## Run the project
 
 Before running anything, make sure you have installed `clippy` and `fmt`:
@@ -21,14 +19,8 @@ rustup component add rustfmt-preview --toolchain nightly
 Just run:
 
 ```sh
-cargo run -p mdlint-cli
-# 2018 now accepts also running cargo run directly in a workspace project
-cargo run # should work in 2018
+cargo run
 ```
-
-or
-
-`./run.sh`
 
 ## Running clippy
 
