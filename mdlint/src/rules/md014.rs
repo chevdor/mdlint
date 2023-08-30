@@ -1,11 +1,10 @@
-use comrak::nodes::AstNode;
 use crate::parser::is_codeblock;
 use crate::rules::common_checks::check_content;
-use crate::rules::extensions::VecExt;
-use crate::ruleset::{RuleResult, RuleResultDetails};
+use crate::ruleset::*;
+use comrak::nodes::AstNode;
 use regex::Regex;
 
-crate fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
+pub(crate) fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
     let rx = Regex::new(r"^$|\$\s.*$").unwrap();
     let details: Vec<RuleResultDetails> = check_content(root, r"^\$\s", Some(is_codeblock))
         .into_iter()
@@ -19,7 +18,7 @@ crate fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
         "MD014",
         "commands-show-output",
         "Dollar signs used before commands without showing output",
-        details.to_option(),
+        Some(details),
     )
 }
 

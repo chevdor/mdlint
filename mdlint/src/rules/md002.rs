@@ -1,10 +1,10 @@
-use comrak::nodes::{Ast, AstNode, NodeValue};
 use crate::parser::{filter_nodes, is_heading};
 use crate::rules::extensions::VecExt;
 use crate::ruleset::{RuleResult, RuleResultDetails};
+use comrak::nodes::{Ast, AstNode, NodeValue};
 use std::cell::Ref;
 
-crate fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
+pub(crate) fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
     let mut details: Vec<RuleResultDetails> = Vec::new();
     if let Some(heading) = filter_nodes(root, is_heading).first() {
         let node: Ref<'_, Ast> = heading.data.borrow();

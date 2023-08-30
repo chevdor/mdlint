@@ -1,9 +1,9 @@
-use comrak::nodes::AstNode;
 use crate::rules::common_checks::check_content;
 use crate::rules::extensions::VecExt;
 use crate::ruleset::RuleResult;
+use comrak::nodes::AstNode;
 
-crate fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
+pub(crate) fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
     let details = check_content(root, r"^#+?[^\s]\S+", None);
 
     RuleResult::new(

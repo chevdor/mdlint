@@ -1,9 +1,9 @@
-use comrak::nodes::AstNode;
 use crate::parser::{filter_nodes, is_heading_1};
 use crate::rules::extensions::VecExt;
 use crate::ruleset::{RuleResult, RuleResultDetails};
+use comrak::nodes::AstNode;
 
-crate fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
+pub(crate) fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
     let details: Vec<RuleResultDetails> = filter_nodes(root, is_heading_1)
         .into_iter()
         .skip(1)

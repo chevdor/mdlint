@@ -1,5 +1,5 @@
 [package]
-edition = '2018'
+edition = '2021'
 name = "mdlint-cli"
 version = "0.1.0"
 authors = ["Roberto Huertas <roberto.huertas@outlook.com>"]
