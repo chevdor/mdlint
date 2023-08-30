@@ -6,3 +6,7 @@ authors = ["Roberto Huertas <roberto.huertas@outlook.com>"]
 
 [dependencies]
 mdlint = { path = "../mdlint" }
+
+[[bin]]
+name = "mdlint"
+path = "src/main.rs"

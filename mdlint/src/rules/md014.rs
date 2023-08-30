@@ -1,6 +1,6 @@
 use crate::parser::is_codeblock;
 use crate::rules::common_checks::check_content;
-use crate::ruleset::*;
+use crate::ruleset::{RuleResult, RuleResultDetails};
 use comrak::nodes::AstNode;
 use regex::Regex;
 

@@ -1,5 +1,3 @@
-#![warn(rust_2018_idioms)]
-
 use mdlint::{all, process, RuleResult};
 
 fn main() {
@@ -10,7 +8,7 @@ fn main() {
 }
 
 fn print(result: Vec<RuleResult>) {
-    result.into_iter().for_each(|x| {
-        println!("{}\r\n", x);
-    });
+    for x in result {
+        println!("{x}\r\n");
+    }
 }

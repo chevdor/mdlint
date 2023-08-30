@@ -50,21 +50,6 @@ impl RuleResult {
         }
     }
 
-    // pub(crate) fn _to_string(&self) -> String {
-    //     let title = format!("{}/{}", self.name, self.alias);
-    //     let mut final_str = format!(
-    //         "{}{}\r\n{}\r\n",
-    //         emoji::ERROR,
-    //         style(title).bold().red(),
-    //         style(&self.description).underlined().yellow()
-    //     );
-    //     if let Some(ref details) = self.details {
-    //         details.iter().for_each(|detail| {
-    //             final_str.push_str(&format!("\r\n{}{}", emoji::INFO, detail.to_string()));
-    //         });
-    //     }
-    //     final_str
-    // }
 }
 
 impl fmt::Display for RuleResult {
@@ -78,12 +63,12 @@ impl fmt::Display for RuleResult {
             style(&self.description).underlined().yellow()
         );
         if let Some(ref details) = self.details {
-            details.iter().for_each(|detail| {
-                final_str.push_str(&format!("\r\n{}{}", emoji::INFO, detail.to_string()));
-            });
+            for detail in details {
+                final_str.push_str(&format!("\r\n{}{}", emoji::INFO, detail));
+            }
         }
 
-        write!(f, "{}", final_str)
+        write!(f, "{final_str}")
     }
 }
 
@@ -111,7 +96,7 @@ impl RuleResultDetails {
         Self::new(
             node.start_line,
             node.start_column,
-            parser::content_to_string(node.content.to_vec()),
+            parser::content_to_string(node.content.clone()),
         )
     }
 
@@ -122,7 +107,11 @@ impl RuleResultDetails {
 
 impl fmt::Display for RuleResultDetails {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", format_args!("ln. {}, col. {}: {}", self.line, self.column, self.content))
+        write!(
+            f,
+            "{}",
+            format_args!("ln. {}, col. {}: {}", self.line, self.column, self.content)
+        )
         // write!(f, "{}", self.to_string())
     }
 }

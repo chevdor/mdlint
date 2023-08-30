@@ -8,7 +8,7 @@ use std::io::{Error, Read};
 use std::path::Path;
 
 pub(crate) fn get_ast<'a>(path: &str, arena: &'a Arena<AstNode<'a>>) -> &'a AstNode<'a> {
-    let text = read_file(path).unwrap_or_else(|_| panic!("Failed to find file: {}", path));
+    let text = read_file(path).unwrap_or_else(|_| panic!("Failed to find file: {path}"));
     parse_document(arena, &text, &ComrakOptions::default())
 }
 
@@ -25,14 +25,14 @@ pub(crate) fn extract_content(node: &AstNode<'_>) -> String {
 
 pub(crate) fn extract_content_from_node(node: &Ref<'_, Ast>) -> String {
     if let NodeValue::CodeBlock(x) = node.value.clone() {
-        let st = content_to_string(x.literal.to_vec());
+        let st = content_to_string(x.literal.clone());
         if node.start_column < 4 {
-            format!("\t{}", st)
+            format!("\t{st}")
         } else {
             st
         }
     } else {
-        content_to_string(node.content.to_vec())
+        content_to_string(node.content.clone())
     }
 }
 

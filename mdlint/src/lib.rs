@@ -6,11 +6,11 @@ mod ruleset;
 pub use crate::rules::all;
 pub use crate::ruleset::RuleResult;
 
-use crate::ruleset::*;
+use crate::ruleset::{CheckFn, RuleSet};
 
+#[must_use]
 pub fn process(path: &str, rules: Option<Vec<CheckFn>>) -> Vec<RuleResult> {
-    let final_rules =
-    if let Some(rules) = rules {
+    let final_rules = if let Some(rules) = rules {
         rules
     } else {
         rules::all()
