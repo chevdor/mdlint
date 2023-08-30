@@ -49,7 +49,6 @@ impl RuleResult {
             details,
         }
     }
-
 }
 
 impl fmt::Display for RuleResult {
