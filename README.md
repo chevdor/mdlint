@@ -28,7 +28,7 @@ See [original rules](https://github.com/markdownlint/markdownlint/blob/master/do
 | MD011      |    ✅    |   ✅  | Reversed link syntax                                          |
 | MD012      |    ✅    |   ✅  | Multiple consecutive blank lines                              |
 | MD013      |    ❌    |   ❌  | Line length                                                   |
-| MD014      |    ✅    |   ✅  | Dollar signs used before commands without showing output      |
+| MD014      |    ✅    |   ⚠️  | Dollar signs used before commands without showing output      |
 | MD015      |    ❌    |   ❌  |                 |
 | MD016      |    ❌    |   ❌  |                 |
 | MD017      |    ❌    |   ❌  |                 |
