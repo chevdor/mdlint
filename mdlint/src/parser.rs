@@ -104,45 +104,27 @@ fn traverse_nodes<'a>(
 }
 
 pub(crate) fn is_heading(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::Heading(_) => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::Heading(_))
 }
 
 pub(crate) fn is_heading_1(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::Heading(x) if x.level == 1 => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::Heading(x) if x.level == 1)
 }
 
 pub(crate) fn is_ul(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::List(x) if x.list_type == ListType::Bullet => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::List(x) if x.list_type == ListType::Bullet)
 }
 
 pub(crate) fn is_codeblock(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::CodeBlock(_) => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::CodeBlock(_))
 }
 
 #[allow(dead_code)]
 pub(crate) fn is_ol(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::List(x) if x.list_type == ListType::Ordered => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::List(x) if x.list_type == ListType::Ordered)
 }
 
 #[allow(dead_code)]
 pub(crate) fn is_paragraph(node: &NodeValue) -> bool {
-    match node {
-        NodeValue::Paragraph => true,
-        _ => false,
-    }
+    matches!(node, NodeValue::Paragraph)
 }

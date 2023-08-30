@@ -8,10 +8,7 @@ pub(crate) fn check<'a>(root: &'a AstNode<'a>) -> RuleResult {
     let rx = Regex::new(r"^$|\$\s.*$").unwrap();
     let details: Vec<RuleResultDetails> = check_content(root, r"^\$\s", Some(is_codeblock))
         .into_iter()
-        .filter(|d| match d.next_content {
-            Some(ref line) if rx.is_match(line) => true,
-            _ => false,
-        })
+        .filter(|d| matches!(d.next_content, Some(ref line) if rx.is_match(line)))
         .collect();
 
     RuleResult::new(

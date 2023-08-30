@@ -9,11 +9,13 @@ pub use crate::ruleset::RuleResult;
 use crate::ruleset::*;
 
 pub fn process(path: &str, rules: Option<Vec<CheckFn>>) -> Vec<RuleResult> {
-    let final_rules = if rules.is_none() {
-        rules::all()
+    let final_rules =
+    if let Some(rules) = rules {
+        rules
     } else {
-        rules.unwrap()
+        rules::all()
     };
+
     let rs = RuleSet::new(final_rules);
     rs.run(path)
 }
