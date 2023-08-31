@@ -3,9 +3,11 @@ edition = '2021'
 name = "mdlint-cli"
 version = "0.1.0"
 authors = ["Roberto Huertas <roberto.huertas@outlook.com>"]
+description = "tbd"
+license-file = "LICENSE"
 
 [dependencies]
-mdlint = { path = "../mdlint" }
+mdlint = { version="0", path = "../mdlint" }
 
 [[bin]]
 name = "mdlint"

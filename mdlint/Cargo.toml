@@ -3,6 +3,8 @@ edition = '2021'
 name = "mdlint"
 version = "0.1.0"
 authors = ["Roberto Huertas <roberto.huertas@outlook.com>"]
+description = "tbd"
+license-file = "LICENSE"
 
 [dependencies]
 console = "0.15"
